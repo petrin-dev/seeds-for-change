@@ -432,7 +432,7 @@
 // ─── LOCATION CARD ───────────────────────────────────────────────────────────
 .location-card {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: var(--space-m);
   align-items: start;
   background: #fff;
@@ -440,15 +440,21 @@
   padding: var(--space-m);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
 
-  @media (max-width: 600px) {
+  @media (max-width: 680px) {
     grid-template-columns: 1fr;
   }
+}
+
+.location-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
 }
 
 .location-card__image {
   border-radius: var(--radius-card);
   overflow: hidden;
-  height: 120px;
+  height: 140px;
 
   img {
     width: 100%;
@@ -458,7 +464,22 @@
 }
 
 .location-card__content {
-  // flex column — heading, then address, then note stacked naturally
+  // heading, address, note stacked naturally
+}
+
+.location-card__map {
+  align-self: stretch;
+  border-radius: calc(var(--radius-card) - 4px);
+  overflow: hidden;
+  min-height: 260px;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    border: none;
+  }
 }
 
 .location-card__heading {
@@ -497,7 +518,37 @@
 .site-footer {
   background: var(--color-near-black);
   color: rgba(255, 255, 255, 0.75);
-  padding-block: var(--space-l);
+}
+
+.site-footer__inner {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-m) var(--space-l);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-l);
+  }
+}
+
+.site-footer__col-heading {
+  color: #fff !important;
+  font-size: var(--size-h3) !important;
+  margin: 0 0 var(--space-xs);
+}
+
+.site-footer__col-intro {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: var(--space-m);
+}
+
+.site-footer__info-col {
   text-align: center;
 }
 
@@ -548,14 +599,40 @@
   text-decoration: none;
   transition: color 0.2s;
 
-  &:hover {
-    color: #fff;
-  }
+  &:hover { color: #fff; }
 }
 
 .site-footer__legal {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-s) var(--space-m);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: var(--space-s);
+  text-align: center;
   font-size: 0.8rem;
   opacity: 0.5;
+}
+
+// ─── THANKS PAGE ─────────────────────────────────────────────────────────────
+.thanks-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-xxl);
+  gap: var(--space-s);
+}
+
+.thanks-section__icon {
+  color: var(--color-sage-green);
+  margin-bottom: var(--space-xs);
+}
+
+.thanks-section__heading {
+  margin: 0;
+}
+
+.thanks-section__body {
+  color: var(--color-warm-gray);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-s);
 }

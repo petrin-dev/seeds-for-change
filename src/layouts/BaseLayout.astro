@@ -75,34 +75,78 @@ const {
     <slot />
   </main>
 
-  <footer class="site-footer">
-    <a href="#home" class="site-footer__logo-link" aria-label="Back to top">
-      <Image
-        src={settings.logo}
-        alt={`${settings.site_name} logo`}
-        class="site-footer__logo"
-        width={84}
-        height={112}
-        loading="lazy"
-      />
-    </a>
-    <p class="site-footer__name">{settings.site_name}</p>
-    <p class="site-footer__entity text-small">{settings.tagline}</p>
+  <footer class="site-footer" id="contact-form">
+    <div class="site-footer__inner">
 
-    <div class="site-footer__links">
-      <a href={settings.phone_href} class="site-footer__link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.92 12 19.79 19.79 0 011.87 3.44 2 2 0 013.86 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.18a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-        </svg>
-        {settings.phone}
-      </a>
-      <a href={`mailto:${settings.email}`} class="site-footer__link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,12 2,6"/>
-        </svg>
-        {settings.email}
-      </a>
+      <div class="site-footer__form-col">
+        <h2 class="site-footer__col-heading">Get in Touch</h2>
+        <p class="site-footer__col-intro">We'd love to hear from you. Tell us a little about what you're looking for and we'll be in touch soon.</p>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thanks"
+          class="contact-form"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="visually-hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="cf-name">Name</label>
+              <input class="contact-form__input" type="text" id="cf-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="cf-email">Email</label>
+              <input class="contact-form__input" type="email" id="cf-email" name="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="cf-phone">
+              Phone <span class="contact-form__optional">(optional)</span>
+            </label>
+            <input class="contact-form__input" type="tel" id="cf-phone" name="phone" autocomplete="tel" />
+          </div>
+
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="cf-message">How can we help?</label>
+            <textarea class="contact-form__input contact-form__textarea" id="cf-message" name="message" rows="4" required></textarea>
+          </div>
+
+          <p class="contact-form__disclosure">
+            Your email will be used only to follow up about the services we offer and will never be shared with third parties.
+            <strong>If you are experiencing a mental health emergency, please call 911 or go to your nearest emergency room.</strong>
+          </p>
+
+          <button type="submit" class="btn btn--fill-gold contact-form__submit">Send Message</button>
+        </form>
+      </div>
+
+      <div class="site-footer__info-col">
+        <a href="#home" class="site-footer__logo-link" aria-label="Back to top">
+          <Image
+            src={settings.logo}
+            alt={`${settings.site_name} logo`}
+            class="site-footer__logo"
+            width={84}
+            height={112}
+            loading="lazy"
+          />
+        </a>
+        <p class="site-footer__name">{settings.site_name}</p>
+        <p class="site-footer__entity text-small">{settings.tagline}</p>
+        <div class="site-footer__links">
+          <a href={settings.phone_href} class="site-footer__link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.92 12 19.79 19.79 0 011.87 3.44 2 2 0 013.86 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.18a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            {settings.phone}
+          </a>
+        </div>
+      </div>
+
     </div>
 
     <div class="site-footer__legal">

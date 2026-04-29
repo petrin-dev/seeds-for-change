@@ -1,7 +1,7 @@
 main:
   - label: About
-    url: "#about"
+    url: "/#about"
   - label: Services
-    url: "#services"
+    url: "/#services"
   - label: Contact
-    url: "#contact"
+    url: "/#contact"

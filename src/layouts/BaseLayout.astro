@@ -27,6 +27,7 @@ const {
     image={og_image || settings.default_og_image}
     siteTitle={settings.site_name}
   />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -86,7 +87,7 @@ const {
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/thanks"
+          action="/thanks/"
           class="contact-form"
         >
           <input type="hidden" name="form-name" value="contact" />
@@ -156,6 +157,17 @@ const {
 
   <script>
     import '../scripts/main.js';
+  </script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>

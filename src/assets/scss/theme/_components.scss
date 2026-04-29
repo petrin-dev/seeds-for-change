@@ -613,6 +613,24 @@
 }
 
 // ─── THANKS PAGE ─────────────────────────────────────────────────────────────
+.thanks-hero {
+  position: relative;
+  height: 280px;
+  background-image: url('/images/uploads/background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 40, 15, 0.55);
+  }
+}
+
 .thanks-section__inner {
   display: flex;
   flex-direction: column;

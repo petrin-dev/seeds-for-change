@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import SEO from '../components/SEO.astro';
+import settings from '../data/settings.yaml';
+import navigation from '../data/navigation.yaml';
+import '../assets/scss/main.scss';
+
+const {
+  title,
+  seo_description,
+  og_image,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href={settings.logo} type="image/png" />
+  <link rel="apple-touch-icon" href={settings.logo} />
+  <SEO
+    title={title}
+    description={seo_description || settings.default_description}
+    image={og_image || settings.default_og_image}
+    siteTitle={settings.site_name}
+  />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <Image src={settings.logo} alt={`${settings.site_name} logo`} width={66} height={88} />
+        <span>{settings.site_name}</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        {navigation.main.map(item => (
+          <li>
+            <a href={item.url} class="nav-link">{item.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        class="nav-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-mobile"
+      >
+        <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="display:none">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
+      {navigation.main.map(item => (
+        <a href={item.url} class="nav-link">{item.label}</a>
+      ))}
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <a href="#home" class="site-footer__logo-link" aria-label="Back to top">
+      <Image
+        src={settings.logo}
+        alt={`${settings.site_name} logo`}
+        class="site-footer__logo"
+        width={84}
+        height={112}
+        loading="lazy"
+      />
+    </a>
+    <p class="site-footer__name">{settings.site_name}</p>
+    <p class="site-footer__entity text-small">{settings.tagline}</p>
+
+    <div class="site-footer__links">
+      <a href={settings.phone_href} class="site-footer__link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.92 12 19.79 19.79 0 011.87 3.44 2 2 0 013.86 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.18a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        {settings.phone}
+      </a>
+      <a href={`mailto:${settings.email}`} class="site-footer__link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,12 2,6"/>
+        </svg>
+        {settings.email}
+      </a>
+    </div>
+
+    <div class="site-footer__legal">
+      &copy; {new Date().getFullYear()} {settings.footer_entity_name} &middot; {settings.address_line2}
+    </div>
+  </footer>
+
+  <script>
+    import '../scripts/main.js';
+  </script>
+</body>
+</html>

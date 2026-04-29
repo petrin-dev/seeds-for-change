@@ -1,0 +1,43 @@
+@use "sass:math";
+
+@function fluid-property($min-value, $max-value) {
+    $min-vw: 360px;
+    $max-vw: 1600px;
+    
+    $slope: math.div($max-value - $min-value, $max-vw - $min-vw);
+    $y-axis-intersection: -$min-vw * $slope + $min-value;
+    
+    @return clamp(#{$min-value}, #{$y-axis-intersection} + #{$slope} * 100vw, #{$max-value});
+}
+
+@mixin draw-in-underline($thickness: 0.125em, $offset: 0.25em) {
+    // 1. Core Link Setup
+    text-decoration: none; 
+    position: relative;
+    display: inline-block;
+    transition: 0.3s; // Fades if the link color changes
+    
+    // 2. The Pseudo-element Underline
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        
+        // Use parameters with EM units for relative sizing
+        bottom: -$offset; 
+        height: $thickness; 
+        
+        // Initial state
+        width: 0; 
+        background-color: currentColor; 
+        
+        // Animation
+        transition: width 0.3s ease-out; 
+    }
+    
+    // 3. Hover State
+    &:hover::after {
+        width: 100%; // Draw-in effect
+    }
+}
+

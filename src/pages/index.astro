@@ -1,0 +1,293 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import settings   from '../data/settings.yaml';
+import team        from '../data/team.yaml';
+import services    from '../data/services.yaml';
+import counseling  from '../data/counseling_hours.yaml';
+import consulting  from '../data/consulting_hours.yaml';
+import introCards  from '../data/intro_cards.yaml';
+---
+<BaseLayout
+  title={undefined}
+  seo_description={settings.default_description}
+  og_image={settings.default_og_image}
+>
+
+  {/* ── HERO ──────────────────────────────────────────────────────────────── */}
+  <section class="hero" id="home" aria-label="Home">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <Image
+        src={settings.logo}
+        alt={`${settings.site_name} logo`}
+        class="hero__logo"
+        width={165}
+        height={220}
+      />
+      <h1>{settings.site_name}</h1>
+      <p class="text-tagline hero__tagline">{settings.tagline}</p>
+      <p class="hero__description">{settings.default_description}</p>
+
+      <div class="btn-group btn-group--center">
+        <a href={settings.phone_href} class="btn btn--fill-gold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.92 12 19.79 19.79 0 011.87 3.44 2 2 0 013.86 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.18a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Free Consultation
+        </a>
+        <a href="#services" class="btn btn--outline-white">Our Services</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-indicator" aria-hidden="true"></div>
+  </section>
+
+  {/* ── INTRO STRIP ───────────────────────────────────────────────────────── */}
+  <section class="intro-strip section--cream" aria-labelledby="intro-heading">
+    <div class="container">
+      <h2 class="intro-strip__heading" id="intro-heading">Cultivating Growth Together</h2>
+      <p class="intro-strip__body">
+        At Seeds for Change, we believe that solutions are found within — ourselves, our connections,
+        and our communities. We partner with you to discover those solutions together.
+      </p>
+      <div class="intro-cards">
+        {introCards.items.map(card => (
+          <a href={card.link_to_section} class="intro-card">
+            <div class="intro-card__image-wrap">
+              <Image src={card.image} alt={card.label.replace(/\n/g, ' ')} width={800} height={600} loading="lazy" decoding="async" />
+            </div>
+            <p class="intro-card__label" set:html={card.label.replace(/\n/g, '<br />')} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── ABOUT ─────────────────────────────────────────────────────────────── */}
+  <section class="section--sage" id="about" aria-labelledby="about-heading">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="section-heading__rule" aria-hidden="true"></span>
+        <h2 id="about-heading">About Us</h2>
+        <p class="text-eyebrow">Seeds for Change Partners</p>
+      </div>
+
+      <div class="bios">
+        {team.items.map(member => (
+          <article class="bio">
+            <div class="bio__photo">
+              <Image
+                src={member.photo}
+                alt={member.name}
+                width={360}
+                height={360}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3 class="bio__name">{member.name}</h3>
+            <p class="bio__creds text-credentials">{member.credentials}</p>
+            <p class="bio__description">{member.role_description}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="story-box">
+        <div>
+          <Image src={settings.logo} alt="Seeds for Change logo" width={240} height={320} loading="lazy" />
+        </div>
+        <div class="story-box__body">
+          <h3 class="story-box__heading">Our Story</h3>
+          <p>
+            We created Seeds for Change at the start of 2019 to combine our passions for social growth
+            and development — through counseling, teaching and learning, and social action. We are
+            inspired by our children, Zachary and Hannah, and their learning experiences. In fact,
+            together they created our logo.
+          </p>
+          <p>Together, we combine talents and passions to plant Seeds for Change.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* ── SERVICES ──────────────────────────────────────────────────────────── */}
+  <section class="section--cream" id="services" aria-labelledby="services-heading">
+    <div class="container--narrow">
+
+      <div class="section-heading">
+        <span class="section-heading__rule" aria-hidden="true"></span>
+        <h2 id="services-heading">Services</h2>
+        <p class="text-eyebrow">What We Do</p>
+      </div>
+
+      <div class="services-list">
+        {services.items.map((service, i) => (
+          <div>
+            <div class="accordion">
+              <h3 class="accordion__heading">
+                <button
+                  class="accordion__trigger"
+                  id={`accordion-trigger-${i}`}
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`accordion-body-${i}`}
+                >
+                  <span>{service.title}</span>
+                  <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <polyline points="4,6 9,12 14,6"/>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__body"
+                id={`accordion-body-${i}`}
+                role="region"
+                aria-labelledby={`accordion-trigger-${i}`}
+              >
+                <ul class="accordion__list" role="list">
+                  {service.items.map((item: string) => (
+                    <li class="accordion__item">
+                      <span class="accordion__dot" aria-hidden="true"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {service.footnote && (
+              <p class="accordion__note">{service.footnote}</p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="services-cta">
+        <p class="services-cta__heading">Ready to get started?</p>
+        <p class="services-cta__body">Call or email for a free consultation.</p>
+        <div class="btn-group btn-group--center">
+          <a href={settings.phone_href} class="btn btn--fill-green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.92 12 19.79 19.79 0 011.87 3.44 2 2 0 013.86 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.18a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            {settings.phone}
+          </a>
+          <a href={`mailto:${settings.email}`} class="btn btn--outline-green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,12 2,6"/>
+            </svg>
+            {settings.email}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* ── CONTACT ───────────────────────────────────────────────────────────── */}
+  <section class="section--sage" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="section-heading__rule" aria-hidden="true"></span>
+        <h2 id="contact-heading">Contact</h2>
+        <p class="text-eyebrow">Hours &amp; Appointments</p>
+      </div>
+
+      <div class="contact-cta">
+        <p>Please call or email for a free consultation</p>
+        <div class="btn-group btn-group--center">
+          <a href={settings.phone_href} class="btn btn--ghost-light">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.92 12 19.79 19.79 0 011.87 3.44 2 2 0 013.86 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.18a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            {settings.phone}
+          </a>
+          <a href={`mailto:${settings.email}`} class="btn btn--ghost-light">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,12 2,6"/>
+            </svg>
+            {settings.email}
+          </a>
+        </div>
+      </div>
+
+      <div class="hours-grid">
+        <div class="hours-card">
+          <h3 class="hours-card__heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Counseling &amp; Coaching
+          </h3>
+          <table class="hours-table">
+            <tbody>
+              {counseling.items.map(row => (
+                <tr>
+                  <td>{row.day_label}</td>
+                  <td>{row.hours}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hours-card">
+          <h3 class="hours-card__heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Consultation
+          </h3>
+          <table class="hours-table">
+            <tbody>
+              {consulting.items.map(row => (
+                <tr>
+                  <td>{row.day_label}</td>
+                  <td>{row.hours}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="location-card__image">
+          <Image
+            src="/images/uploads/office.jpg"
+            alt="The Mill at LaFayette office location"
+            width={280}
+            height={200}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="location-card__content">
+          <h3 class="location-card__heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Our Location
+          </h3>
+          <address class="location-card__address">
+            {settings.address_line1}<br />
+            {settings.address_line2}<br />
+            <em class="location-card__location-name">{settings.address_location_name}</em>
+          </address>
+          <p class="location-card__note">{settings.address_note}</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,7 @@
+items:
+  - day_label: Tuesday
+    hours: "8:30 AM – 12:30 PM"
+  - day_label: Wednesday & Thursday
+    hours: "12:00 PM – 7:00 PM"
+  - day_label: Every other Saturday
+    hours: "9:00 AM – 12:00 PM"

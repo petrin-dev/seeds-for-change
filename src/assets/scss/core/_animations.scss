@@ -1,0 +1,204 @@
+// Fades
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.has-animation.has-been-revealed .fade-in-left {
+animation-name: fade-in-left;
+animation-duration: 2s;
+animation-fill-mode: both;
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.has-animation.has-been-revealed .fade-in-right {
+  animation-name: fade-in-right;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.has-animation.has-been-revealed .fade-in-up {
+  animation-name: fade-in-up;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes services-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.has-animation.has-been-revealed .fade-in-down {
+  animation-name: fade-in-down;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.has-animation.has-been-revealed .reveal-in {
+animation: reveal 3s cubic-bezier(0.77, 0, 0.175, 1);
+animation-fill-mode: both;
+}
+
+@keyframes reveal {
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+  }
+}
+
+// Image Scrolling Effect
+@keyframes zoom {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.has-image-animation.has-been-revealed {
+  overflow: hidden;
+  figure {
+    margin-bottom: 0;
+  }
+  img {
+      animation: zoom 1.5s ease-in-out;
+      animation-fill-mode: both;
+      margin-bottom: 0;
+  }
+}
+
+.delayed-image-animation img {
+  animation-duration: 3s !important;
+  animation-fill-mode: both;
+}
+
+// Horizontal Line Draw In
+@keyframes draw-in-line {
+  from {
+      width: 1%;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+// Horizontal Line Draw In
+@keyframes draw-in-line-80 {
+from {
+    width: 80%;
+}
+to {
+    width: 100%;
+}
+}
+
+.has-animation.has-been-revealed .animated-line {
+  animation: draw-in-line 1s ease-in-out;
+  animation-fill-mode: both;
+}
+
+.has-animation.has-been-revealed .animated-line-80 {
+animation: draw-in-line-80 1s ease-in-out;
+animation-fill-mode: both;
+}
+
+/* ANIMATION UTILITIES */
+.animation-delay-500ms {
+  animation-delay: 500ms;
+}
+
+.animation-delay-1s {
+animation-delay: 1s;
+}
+
+.animation-delay-1p5s {
+animation-delay: 1.5s;
+}
+
+// H1 Pulsing Text
+
+@keyframes pulse-in {
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+}
+
+/* REDUCED MOTION
+ * Kills scroll-triggered entrance animations (fade, slide, zoom, parallax).
+ * Deliberately spares transition-based micro-interactions (hover states, focus rings)
+ * because those are meaningful UI feedback, not decorative motion.
+ * Applied as a hard global override — any animation in .has-animation or
+ * .has-image-animation context is disabled regardless of how it was added.
+ */
+@media (prefers-reduced-motion: reduce) {
+    .has-animation *,
+    .has-animation.has-been-revealed * {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .has-image-animation img,
+    .has-image-animation.has-been-revealed img,
+    .delayed-image-animation img {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .has-animation.has-been-revealed .animated-line,
+    .has-animation.has-been-revealed .animated-line-80 {
+        animation: none !important;
+        width: 100% !important;
+    }
+}
+

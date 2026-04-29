@@ -1,0 +1,65 @@
+// Accessibility (a11y) — Global Quality of Life
+//
+// Safe global improvements that apply across all projects.
+// None of these override block-level styling or conflict with Gutenberg.
+// Reduced motion is handled separately in _animations.scss.
+
+// Screen reader only utility.
+// Hides content visually while keeping it accessible to assistive technology.
+// Already duplicated in some blocks — this global definition is the canonical one.
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+// Global focus ring for keyboard navigation.
+// :focus-visible only fires for keyboard/sequential focus — not mouse clicks.
+// Block-level styles can still override this per component.
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+// Skip link — keyboard shortcut to jump to main content.
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    background: var(--color-text);
+    color: var(--color-background);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:focus {
+        top: 0;
+    }
+}
+
+// Protect the hidden attribute.
+// Browsers implement this natively, but reinforce it in case a CSS reset removes it.
+[hidden] {
+    display: none !important;
+}
+
+// Abbreviations with title attributes should signal they carry a definition.
+abbr[title] {
+    cursor: help;
+    text-decoration: underline dotted;
+}
+
+// Disabled elements should communicate non-interactivity via cursor.
+// Opacity intentionally omitted — button and form designs handle their own disabled states.
+[aria-disabled="true"],
+:disabled {
+    cursor: not-allowed;
+}

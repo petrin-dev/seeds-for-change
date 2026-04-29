@@ -1,0 +1,12 @@
+items:
+  - label: "Mental Health\n& Wellness"
+    image: /images/uploads/unnamed.jpg
+    link_to_section: "#services"
+
+  - label: "Academic\nCoaching"
+    image: /images/uploads/unnamed2.jpg
+    link_to_section: "#services"
+
+  - label: "Social Research\n& Org Development"
+    image: /images/uploads/unnamed3.jpg
+    link_to_section: "#services"

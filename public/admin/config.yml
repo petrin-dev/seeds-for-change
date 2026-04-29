@@ -1,0 +1,117 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+
+  # ─── GLOBAL SETTINGS ──────────────────────────────────────────────────────
+  - name: settings
+    label: Site Settings
+    files:
+
+      - name: global
+        label: Global Settings
+        file: src/data/settings.yaml
+        fields:
+          - {label: Site Name, name: site_name, widget: string}
+          - {label: Tagline, name: tagline, widget: string}
+          - {label: Phone (display), name: phone, widget: string}
+          - {label: Phone (href — digits only, no spaces), name: phone_href, widget: string}
+          - {label: Email, name: email, widget: string}
+          - {label: Address Line 1, name: address_line1, widget: string}
+          - {label: Address Line 2, name: address_line2, widget: string}
+          - {label: Location Name, name: address_location_name, widget: string}
+          - {label: Location Note, name: address_note, widget: text}
+          - {label: Footer Entity Name, name: footer_entity_name, widget: string}
+          - {label: Logo, name: logo, widget: image}
+          - {label: Default Meta Description, name: default_description, widget: text}
+          - {label: Default OG Image, name: default_og_image, widget: image, required: false}
+
+      - name: navigation
+        label: Navigation
+        file: src/data/navigation.yaml
+        fields:
+          - label: Main Nav Links
+            name: main
+            widget: list
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: "URL (use #anchor for single-page)", name: url, widget: string}
+
+  # ─── PAGE CONTENT ─────────────────────────────────────────────────────────
+  - name: pages
+    label: Pages
+    files:
+
+      - name: intro_cards
+        label: Intro Section Cards
+        file: src/data/intro_cards.yaml
+        fields:
+          - label: Cards
+            name: items
+            widget: list
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Image, name: image, widget: image}
+              - {label: Link To Section (anchor), name: link_to_section, widget: string}
+
+  # ─── DATA COLLECTIONS ─────────────────────────────────────────────────────
+  - name: data_collections
+    label: Data
+    files:
+
+      - name: team
+        label: Team Members
+        file: src/data/team.yaml
+        fields:
+          - label: Team Members
+            name: items
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Credentials, name: credentials, widget: string}
+              - {label: Role Description, name: role_description, widget: text}
+              - {label: Photo, name: photo, widget: image}
+              - {label: Display Order, name: display_order, widget: string}
+
+      - name: services
+        label: Services
+        file: src/data/services.yaml
+        fields:
+          - label: Service Categories
+            name: items
+            widget: list
+            fields:
+              - {label: Title, name: title, widget: string}
+              - label: Service Items
+                name: items
+                widget: list
+                field: {label: Item, name: item, widget: string}
+              - {label: Footnote (optional), name: footnote, widget: string, required: false}
+
+      - name: counseling_hours
+        label: "Counseling & Coaching Hours"
+        file: src/data/counseling_hours.yaml
+        fields:
+          - label: Hours
+            name: items
+            widget: list
+            fields:
+              - {label: Day Label, name: day_label, widget: string}
+              - {label: Hours, name: hours, widget: string}
+
+      - name: consulting_hours
+        label: Consultation Hours
+        file: src/data/consulting_hours.yaml
+        fields:
+          - label: Hours
+            name: items
+            widget: list
+            fields:
+              - {label: Day Label, name: day_label, widget: string}
+              - {label: Hours, name: hours, widget: string}

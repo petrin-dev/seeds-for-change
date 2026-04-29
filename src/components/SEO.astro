@@ -1,0 +1,26 @@
+---
+const {
+  title,
+  description,
+  image,
+  siteTitle,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const fullTitle    = title ? `${title} | ${siteTitle}` : siteTitle;
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:type"        content="website" />
+<meta property="og:title"       content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url"         content={canonicalURL} />
+{image && <meta property="og:image" content={image} />}
+
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content={fullTitle} />
+<meta name="twitter:description" content={description} />
+{image && <meta name="twitter:image" content={image} />}

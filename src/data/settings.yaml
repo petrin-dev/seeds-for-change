@@ -1,0 +1,13 @@
+site_name: Seeds for Change
+tagline: Counseling and Consulting Services, LLC
+phone: "401-402-0595"
+phone_href: "tel:4014020595"
+email: christiane@seedsforchange.net
+address_line1: "650 Ten Rod Road, Suite 103"
+address_line2: "North Kingstown, RI"
+address_location_name: The Mill at LaFayette
+address_note: We also provide services in other community-based locations around Rhode Island. Please call for details.
+footer_entity_name: Seeds for Change, LLC
+logo: /images/uploads/logo.png
+default_description: Supporting growth, learning, and development for individuals, couples, families, and communities.
+default_og_image: /images/uploads/background.jpg

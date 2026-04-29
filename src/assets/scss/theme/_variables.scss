@@ -1,0 +1,59 @@
+@use '../core/functions' as *;
+
+// ─── FONT FACE ────────────────────────────────────────────────────────────────
+// Lato loaded via Google Fonts in BaseLayout.astro
+
+// ─── ROOT TOKENS ─────────────────────────────────────────────────────────────
+:root {
+
+  // --- Color Palette (most-used to least-used) ---
+  --color-sage-green:  #4F694D;
+  --color-near-black:  #212121;
+  --color-warm-gray:   #5E5E5E;
+  --color-warm-gold:   #C4973A;
+  --color-warm-cream:  #F7F5F0;
+  --color-light-sage:  #EEF1ED;
+
+  // --- Semantic Aliases ---
+  --color-text:        var(--color-near-black);
+  --color-background:  var(--color-warm-cream);
+  --color-accent:      var(--color-sage-green);
+
+  // --- Gradient ---
+  --gradient-hero-overlay: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(33, 33, 33, 0.48) 100%
+  );
+
+  // --- Font Family ---
+  --font-body: 'Lato', sans-serif;
+
+  // --- Font Sizes ---
+  --size-display: #{fluid-property(38px, 64px)};
+  --size-h2:      #{fluid-property(29px, 40px)};
+  --size-h3:      #{fluid-property(22px, 28px)};
+  --size-h4:      #{fluid-property(18px, 20px)};
+  --size-accent:  #{fluid-property(18px, 20px)};
+  --size-body:    #{fluid-property(15px, 17px)};
+  --size-tagline: #{fluid-property(16px, 20px)};
+  --size-eyebrow: 13px;
+  --size-small:   13px;
+
+  // --- Spacing ---
+  --space-xxs: #{fluid-property(4px, 6px)};
+  --space-xs:  #{fluid-property(8px, 12px)};
+  --space-s:   #{fluid-property(14px, 18px)};
+  --space-m:   #{fluid-property(24px, 32px)};
+  --space-l:   #{fluid-property(40px, 56px)};
+  --space-xl:  #{fluid-property(64px, 96px)};
+  --space-xxl: #{fluid-property(80px, 120px)};
+
+  // --- Border Radius ---
+  --radius-btn:   999px;
+  --radius-card:  12px;
+  --radius-input: 8px;
+
+  // --- Header ---
+  --header-height: 72px;
+}

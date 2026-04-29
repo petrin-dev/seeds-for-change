@@ -1,0 +1,97 @@
+// ─── BASE BUTTON ─────────────────────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-btn);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s;
+  line-height: 1;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// fill-gold: warm-gold background, white text — hero CTA
+.btn--fill-gold {
+  background: var(--color-warm-gold);
+  color: #fff;
+  border-color: var(--color-warm-gold);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    opacity: 0.85;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// fill-green: sage-green background, white text
+.btn--fill-green {
+  background: var(--color-sage-green);
+  color: #fff;
+  border-color: var(--color-sage-green);
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+// outline-white: transparent, white border (hero context)
+.btn--outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+  }
+}
+
+// outline-green: transparent, sage-green border
+.btn--outline-green {
+  background: transparent;
+  color: var(--color-sage-green);
+  border-color: var(--color-sage-green);
+
+  &:hover {
+    background: var(--color-sage-green);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+// ghost on dark — white semi-transparent, used in contact CTA banner
+.btn--ghost-light {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: none;
+  }
+}
+
+// ─── BUTTON GROUPS ───────────────────────────────────────────────────────────
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-group--center {
+  justify-content: center;
+}

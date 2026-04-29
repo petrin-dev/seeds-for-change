@@ -1,1 +1,2 @@
-/*    /    301
+# Netlify redirect rules
+# 404s are handled by /404.html (generated from src/pages/404.astro)

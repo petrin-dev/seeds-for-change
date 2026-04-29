@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import settings from '../data/settings.yaml';
+---
+<BaseLayout title="Page Not Found" seo_description="This page could not be found.">
+  <div class="thanks-hero"></div>
+  <section class="thanks-section section--cream">
+    <div class="container thanks-section__inner">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" class="thanks-section__icon">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <h1 class="thanks-section__heading">Page Not Found</h1>
+      <p class="thanks-section__body">
+        We couldn't find what you were looking for. It may have moved, or the link might be incorrect.
+      </p>
+      <a href="/" class="btn btn--fill-green">Back to Home</a>
+    </div>
+  </section>
+</BaseLayout>

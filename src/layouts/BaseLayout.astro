@@ -9,6 +9,7 @@ const {
   title,
   seo_description,
   og_image,
+  hideContactForm = false,
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -77,9 +78,9 @@ const {
   </main>
 
   <footer class="site-footer" id="contact-form">
-    <div class="site-footer__inner">
+    <div class={`site-footer__inner${hideContactForm ? ' site-footer__inner--centered' : ''}`}>
 
-      <div class="site-footer__form-col">
+      {!hideContactForm && <div class="site-footer__form-col">
         <h2 class="site-footer__col-heading">Get in Touch</h2>
         <p class="site-footer__col-intro">We'd love to hear from you. Tell us a little about what you're looking for and we'll be in touch soon.</p>
         <form
@@ -123,7 +124,7 @@ const {
 
           <button type="submit" class="btn btn--fill-gold contact-form__submit">Send Message</button>
         </form>
-      </div>
+      </div>}
 
       <div class="site-footer__info-col">
         <a href="/" class="site-footer__logo-link" aria-label="Back to top">

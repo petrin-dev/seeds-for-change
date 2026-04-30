@@ -6,6 +6,8 @@ backend:
   auth_endpoint: auth
   allow_token_auth: false
 
+logo_url: /images/uploads/logo.png
+
 media_folder: public/images/uploads
 public_folder: /images/uploads
 

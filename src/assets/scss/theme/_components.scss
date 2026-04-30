@@ -371,63 +371,6 @@
   }
 }
 
-// ─── HOURS CARDS ─────────────────────────────────────────────────────────────
-.hours-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-m);
-  margin-bottom: var(--space-l);
-}
-
-.hours-card {
-  background: #fff;
-  border-radius: var(--radius-card);
-  padding: var(--space-m);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-}
-
-.hours-card__heading {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: var(--space-s);
-  font-size: 1.05rem;
-  color: var(--color-sage-green) !important;
-
-  svg {
-    flex-shrink: 0;
-    color: var(--color-near-black);
-    opacity: 0.7;
-  }
-}
-
-.hours-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  tr {
-    border-bottom: 1px solid rgba(79, 105, 77, 0.1);
-
-    &:last-child { border-bottom: none; }
-  }
-
-  td {
-    padding: 0.6rem 0;
-    font-size: 0.9rem;
-    vertical-align: top;
-
-    &:first-child {
-      color: var(--color-near-black);
-      font-weight: 600;
-      padding-right: 1rem;
-    }
-
-    &:last-child {
-      color: var(--color-warm-gray);
-      text-align: right;
-    }
-  }
-}
 
 // ─── LOCATION CARD ───────────────────────────────────────────────────────────
 .location-card {
@@ -521,37 +464,12 @@
 }
 
 .site-footer__inner {
-  max-width: 1100px;
+  max-width: 480px;
   margin-inline: auto;
   padding: var(--space-xl) var(--space-m) var(--space-l);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-  align-items: start;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: var(--space-l);
-  }
-
-  &--centered {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    max-width: 480px;
-  }
-}
-
-.site-footer__col-heading {
-  color: #fff !important;
-  font-size: var(--size-h3) !important;
-  margin: 0 0 var(--space-xs);
-}
-
-.site-footer__col-intro {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  margin-bottom: var(--space-m);
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 .site-footer__info-col {
@@ -618,45 +536,3 @@
   opacity: 0.5;
 }
 
-// ─── THANKS PAGE ─────────────────────────────────────────────────────────────
-.thanks-hero {
-  position: relative;
-  height: 280px;
-  background-image: url('/images/uploads/background.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 40, 15, 0.55);
-  }
-}
-
-.thanks-section__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-block: var(--space-xxl);
-  gap: var(--space-s);
-}
-
-.thanks-section__icon {
-  color: var(--color-sage-green);
-  margin-bottom: var(--space-xs);
-}
-
-.thanks-section__heading {
-  margin: 0;
-}
-
-.thanks-section__body {
-  color: var(--color-warm-gray);
-  font-size: 1.1rem;
-  margin-bottom: var(--space-s);
-}

@@ -94,24 +94,3 @@ collections:
                 field: {label: Item, name: item, widget: string}
               - {label: Footnote (optional), name: footnote, widget: string, required: false}
 
-      - name: counseling_hours
-        label: "Counseling & Coaching Hours"
-        file: src/data/counseling_hours.yaml
-        fields:
-          - label: Hours
-            name: items
-            widget: list
-            fields:
-              - {label: Day Label, name: day_label, widget: string}
-              - {label: Hours, name: hours, widget: string}
-
-      - name: consulting_hours
-        label: Consultation Hours
-        file: src/data/consulting_hours.yaml
-        fields:
-          - label: Hours
-            name: items
-            widget: list
-            fields:
-              - {label: Day Label, name: day_label, widget: string}
-              - {label: Hours, name: hours, widget: string}
